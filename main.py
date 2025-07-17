@@ -5,7 +5,7 @@ if __name__ == '__main__':
     
     # Open output file for writing
     with open('output.txt', 'w') as output_file:
-        N = int(lines[0])
+        N = int(input())
         result = []
         for i in range(1, N + 1):
             cmd = lines[i].split()
