@@ -5,34 +5,24 @@ if __name__ == '__main__':
     
     # Open output file for writing
     with open('output.txt', 'w') as output_file:
-        N = int(lines[0].strip())
-        requiredList = []
-        
+        N = int(lines[0])
+        result = []
         for i in range(1, N + 1):
-            command = lines[i].strip().split()
-            
-            if command[0] == "insert":
-                pos = int(command[1])
-                val = int(command[2])
-                requiredList.insert(pos, val)
-            elif command[0] == "print":
-                output_file.write(str(requiredList) + '\n')
-            elif command[0] == "remove":
-                val = int(command[1])
-                requiredList.remove(val)
-            elif command[0] == "append":
-                val = int(command[1])
-                requiredList.append(val)
-            elif command[0] == "sort":
-                requiredList.sort()
-            elif command[0] == "pop":
-                if len(command) > 1:
-                    pos = int(command[1])
-                    requiredList.pop(pos)
-                else:
-                    requiredList.pop()
-            elif command[0] == "reverse":
-                requiredList.reverse()
+            cmd = lines[i].split()
+            if cmd[0] == "insert":
+                result.insert(int(cmd[1]), int(cmd[2]))
+            elif cmd[0] == "print":
+                output_file.write(str(result) + '\n')
+            elif cmd[0] == "remove":
+                result.remove(int(cmd[1]))
+            elif cmd[0] == "append":
+                result.append(int(cmd[1]))
+            elif cmd[0] == "sort":
+                result.sort()
+            elif cmd[0] == "pop":
+                result.pop()
+            elif cmd[0] == "reverse":
+                result.reverse()
             
             # Write current command to output for debugging
-            output_file.write(f"Executed: {' '.join(command)}\n")
+            #output_file.write(f"Executed: {' '.join(result)}\n") #Original requested. Commenting out since it's not part of the problem spec.
